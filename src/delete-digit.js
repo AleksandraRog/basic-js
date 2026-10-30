@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../lib');
+const { NotImplementedError } = require("../lib");
 
 /**
  * Given some integer, find the maximal number you can obtain
@@ -11,11 +11,19 @@ const { NotImplementedError } = require('../lib');
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+function deleteDigit(n) {
+  let str = String(n);
+  const arr = str.split("").map((v) => Number(v));
+  if (arr[0] < arr[1]) {
+    return Number(arr.slice(1).join(""));
+  }
+  const min = Math.min(...arr);
+  const targetIndex = arr.lastIndexOf(min);
+  arr[targetIndex] = "";
+  const answ = arr.join("");
+  return Number(answ);
 }
 
 module.exports = {
-  deleteDigit
+  deleteDigit,
 };
