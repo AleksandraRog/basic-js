@@ -13,10 +13,20 @@ const { NotImplementedError } = require('../lib');
  *
  */
 class DepthCalculator {
-  calculateDepth(/* arr */) {
-    // Remove line below and write your code here
-    throw new NotImplementedError('Not implemented');
+  calculateDepth(arr) {
+    const stringarr = JSON.stringify(arr);
+
+    let ind1 = 0;
+    let ind2 = 0
+    for (let i = 0; i < stringarr.length; i += 1) {
+      if (stringarr[i] === '[') { ind2 += 1; }
+      if (stringarr[i] === ']') { ind2 -= 1; }
+      if (ind2 > ind1) { ind1 = ind2 }
+    }
+    console.log(stringarr);
+    return ind1;
   }
+
 }
 
 module.exports = {
